@@ -5,8 +5,8 @@ import './App.css'
 
 function tokenize(expr) {
   return expr
-    .replace(/x/g, '*')          
-    .replace(/\s+/g, '')        
+    .replace(/x/g, '*')
+    .replace(/\s+/g, '')
     .match(/(\d+\.?\d*|\.\d+|[()+\-*/])/g);
 }
 
@@ -58,8 +58,8 @@ function evaluatePostfix(postfix) {
     if (!isNaN(token)) {
       stack.push(parseFloat(token));
     } else {
-      const b = stack.pop();
-      const a = stack.pop();
+      const b = stack.pop() || 0;
+      const a = stack.pop() || 0;
 
 
       switch (token) {
@@ -78,7 +78,7 @@ function evaluatePostfix(postfix) {
 function App() {
   const [input, setInput] = useState("0")
 
-  function onEquals() { 
+  function onEquals() {
     const ans = evaluatePostfix(infixToPostfix(tokenize(input))).toString();
 
     setInput(ans);
