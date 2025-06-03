@@ -110,6 +110,14 @@ function App() {
       return
     }
 
+    if (input == "0") {
+        if (ev.target.value == "-") {
+            setInput("-")
+        }
+
+        return;
+    }
+
     setInput((i) => i + ev.target.value)
   }
 
