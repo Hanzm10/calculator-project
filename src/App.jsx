@@ -100,12 +100,12 @@ function App() {
   function onDelete() {
     if (input == 0) { return }
     if (input.length == 1) { setInput("0"); return }
-    if (input == "Infinity" || input == "-Infinity") {setInput("0"); return}
+    if (input == "Infinity" || input == "-Infinity" || input == "NaN") {setInput("0"); return}
     setInput((i) => i.slice(0, -1))
   }
 
   function onOperator(ev) {
-    var operator = input.charAt(input.length - 1)
+    const operator = input.charAt(input.length - 1)
     if (operator == "+" || operator == "-" || operator == "x" || operator == "/") {
       return
     }
@@ -114,13 +114,13 @@ function App() {
   }
 
   function onDecimal() {
-    var operation1 = input.lastIndexOf("+")
-    var operation2 = input.lastIndexOf("-")
-    var operation3 = input.lastIndexOf("x")
-    var operation4 = input.lastIndexOf("/")
+    const operation1 = input.lastIndexOf("+")
+    const operation2 = input.lastIndexOf("-")
+    const operation3 = input.lastIndexOf("x")
+    const operation4 = input.lastIndexOf("/")
 
 
-    var point = input.substring(Math.max(operation1, operation2, operation3, operation4)).includes(".")
+    const point = input.substring(Math.max(operation1, operation2, operation3, operation4)).includes(".")
     if (point) {
       return
     }
